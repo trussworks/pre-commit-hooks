@@ -1,0 +1,9 @@
+
+-   id: markdown-toc
+    name: Insert a table of contents in Markdown files, like a README.md
+    entry: markdown-toc
+    args: [--bullets='*', -i]
+    language: node
+    additional_dependencies: [markdown-toc]
+    files: \.md$
+
