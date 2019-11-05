@@ -1,9 +1,32 @@
 
--   id: markdown-toc
-    name: Insert a table of contents in Markdown files, like a README.md
-    entry: markdown-toc
-    args: [--bullets='*', -i]
-    language: node
-    additional_dependencies: [markdown-toc]
-    files: \.md$
+- id: circleci-validate
+  name: Validate CircleCI config yaml
+  description: Validate CircleCI config yaml
+  entry: pre-commit-circleci-validate
+  language: script
+  files: '[.]circleci/config.yml$'
+  pass_filenames: false
 
+- id: gen-docs
+  name: Generate a Docs Index
+  description: Generate a Docs Index
+  entry: npx adr
+  language: node
+  types: ["file", "markdown"]
+  pass_filenames: false
+
+- id: markdown-toc
+  name: Generate a Table of Contents in Markdown files
+  description: Generate a Table of Contents in Markdown files
+  entry: npx md-toc
+  language: node
+  types: ["file", "markdown"]
+
+- id: mdspell
+  name: Run spellcheck
+  description: Run spellcheck
+  entry: mdspell
+  language: node
+  args: ["--ignore-numbers", "--ignore-acronyms", "--en-us", "-r"]
+  additional_dependencies: ["markdown-spellcheck"]
+  types: ["file", "markdown"]

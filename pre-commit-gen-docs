@@ -1,0 +1,41 @@
+#! /usr/bin/env bash
+
+set -eu -o pipefail
+
+# Get the directory of this file inside pre-commit cache
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ADR_BIN="${DIR}/../../node_modules/.bin/adr-log"
+
+# Rename ADR to whatever we want
+function rename {
+  perl -i -pe "s/ \[ADR-/ [$1-/g;" index.md
+}
+
+# Remove the last line if its an empty newline
+function chomp {
+  perl -pi -e 'chomp if eof;' "$1"
+}
+
+function update_index {
+  pushd "${dir}" > /dev/null || return
+
+  # Rebuild the index && remove both newlines that it adds
+  node "${ADR_BIN}" -i && chomp index.md && chomp index.md
+
+  # We need to rename ADR to a different name
+  title=$(basename "$1")
+  case "${title}" in
+    # This is the default behavior
+    # adr )
+    #   rename ADR ;;
+    rfc )
+      rename RFC ;;
+    runbook )
+      rename Runbook ;;
+  esac
+  popd > /dev/null || return
+}
+
+for dir in docs/adr docs/rfc docs/runbook; do
+  update_index "${dir}"
+done

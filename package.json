@@ -1,0 +1,16 @@
+{
+  "dependencies": {},
+  "devDependencies": {
+    "adr-log": "^2.1.1",
+    "markdown-spellcheck": "^1.3.1",
+    "markdown-toc": "^1.2.0"
+  },
+  "name": "pre-commit-hooks",
+  "private": true,
+  "bin": {
+    "md-toc": "./pre-commit-markdown-toc",
+    "adr": "./pre-commit-gen-docs"
+  },
+  "scripts": {},
+  "version": "0.0.1"
+}
