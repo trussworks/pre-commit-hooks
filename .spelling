@@ -1,0 +1,13 @@
+CircleCI
+adr-log
+circleci-validate
+config
+markdown-toc
+mdspell
+pre-commit
+pre-commit-circleci-validate
+pre-commit-gen-docs
+pre-commit-markdown-toc
+pre-commit-mdspell
+repo
+yaml

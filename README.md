@@ -2,12 +2,12 @@
 
 <!-- toc -->
 
-* [pre-commit-circleci-validate](#pre-commit-circleci-validate)
-* [pre-commit-gen-docs](#pre-commit-gen-docs)
-* [pre-commit-markdown-toc](#pre-commit-markdown-toc)
-* [pre-commit-mdspell](#pre-commit-mdspell)
+* [circleci-validate](#circleci-validate)
+* [gen-docs](#gen-docs)
+* [markdown-toc](#markdown-toc)
+* [mdspell](#mdspell)
 
-Regenerate with "scripts/pre-commit-markdown-toc"
+Regenerate with "pre-commit run -a markdown-toc"
 
 <!-- tocstop -->
 
@@ -25,23 +25,13 @@ on CircleCI and it will be a no-op.
 
 ## gen-docs
 
-Generate a Docs Index using [adr-log](https://www.npmjs.com/package/adr-log). It will modify files with this
-code in it:
-
-```md
-<!-- adrlog -->
-<!-- adrlogstop -->
-```
+Generate a Docs Index using [adr-log](https://www.npmjs.com/package/adr-log). It will modify files with comments in it
+per the docs on that module.
 
 ## markdown-toc
 
-Generate a Table of Contents using [markdown-toc](https://www.npmjs.com/package/markdown-toc). It will modify files with this
-code in it:
-
-```md
-<!-- toc -->
-<!-- tocstop -->
-```
+Generate a Table of Contents using [markdown-toc](https://www.npmjs.com/package/markdown-toc). It will modify files
+with comments in it per the docs on that module.
 
 ## mdspell
 

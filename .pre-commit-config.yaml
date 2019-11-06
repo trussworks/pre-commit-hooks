@@ -12,3 +12,9 @@ repos:
     hooks:
       - id: markdownlint
         entry: markdownlint --ignore .github/*.md
+
+  - repo: git://github.com/trussworks/pre-commit-hooks
+    rev: v0.0.1
+    hooks:
+      - id: markdown-toc
+      - id: mdspell
