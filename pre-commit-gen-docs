@@ -32,6 +32,8 @@ function update_index {
       rename RFC ;;
     runbook )
       rename Runbook ;;
+    how-to )
+      rename How-To ;;
   esac
   popd > /dev/null || return
 }
