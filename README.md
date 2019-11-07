@@ -28,6 +28,9 @@ on CircleCI and it will be a no-op.
 Generate a Docs Index using [adr-log](https://www.npmjs.com/package/adr-log). It will modify files with comments in it
 per the docs on that module.
 
+By default it will only look in the `docs/` directory of your repo. You can pass in different directories by using
+the `args` parameter like this: `args: ["docs/adr", "docs/rfc"]`
+
 ## markdown-toc
 
 Generate a Table of Contents using [markdown-toc](https://www.npmjs.com/package/markdown-toc). It will modify files
