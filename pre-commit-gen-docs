@@ -37,5 +37,7 @@ function update_index {
 }
 
 for dir in docs/adr docs/rfc docs/runbook; do
-  update_index "${dir}"
+  if [[ -d "${dir}" ]]; then
+    update_index "${dir}"
+  fi
 done
