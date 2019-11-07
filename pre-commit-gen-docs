@@ -36,7 +36,7 @@ function update_index {
   popd > /dev/null || return
 }
 
-for dir in docs/adr docs/rfc docs/runbook; do
+for dir in "$@"; do
   if [[ -d "${dir}" ]]; then
     update_index "${dir}"
   fi

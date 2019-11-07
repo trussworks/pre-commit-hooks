@@ -12,6 +12,7 @@
   description: Generate a Docs Index
   entry: npx adr
   language: node
+  args: ["docs/adr"]
   types: ["file", "markdown"]
   pass_filenames: false
 
