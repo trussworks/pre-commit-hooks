@@ -16,6 +16,14 @@
   types: ["file", "markdown"]
   pass_filenames: false
 
+- id: goreleaser-check
+  name: Validate goreleaser config yaml
+  description: Validate goreleaser config yaml
+  entry: goreleaser check
+  language: system
+  files: '.goreleaser.yml'
+  pass_filenames: false
+
 - id: markdown-toc
   name: Generate a Table of Contents in Markdown files
   description: Generate a Table of Contents in Markdown files
@@ -31,3 +39,10 @@
   args: ["--ignore-numbers", "--ignore-acronyms", "--en-us", "-r"]
   additional_dependencies: ["markdown-spellcheck"]
   types: ["file", "markdown"]
+
+- id: spelling-sort
+  name: Sort spelling doc
+  description: Sort mdspell spelling file
+  entry: /usr/bin/sort -u -o .spelling .spelling
+  language: script
+  pass_filenames: false
