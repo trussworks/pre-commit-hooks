@@ -1,20 +1,20 @@
 repos:
 
   - repo: git://github.com/pre-commit/pre-commit-hooks
-    rev: v2.2.3
+    rev: v3.1.0
     hooks:
       - id: check-json
       - id: check-yaml
       - id: trailing-whitespace
 
   - repo: git://github.com/igorshubovych/markdownlint-cli
-    rev: v0.17.0
+    rev: v0.23.1
     hooks:
       - id: markdownlint
         entry: markdownlint --ignore .github/*.md
 
   - repo: git://github.com/trussworks/pre-commit-hooks
-    rev: v0.0.1
+    rev: v0.0.3
     hooks:
       - id: markdown-toc
       - id: mdspell

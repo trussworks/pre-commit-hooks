@@ -1,7 +1,11 @@
 {
   "default": true,
-  "first-header-h1": false,
-  "first-line-h1": false,
   "line_length": false,
-  "no-multiple-blanks": false
+  "MD024": {
+    "siblings_only": true
+  },
+  "MD014": false,
+  "MD033": false,
+  "MD040": false,
+  "MD046": false
 }
