@@ -14,7 +14,8 @@ repos:
         entry: markdownlint --ignore .github/*.md
 
   - repo: git://github.com/trussworks/pre-commit-hooks
-    rev: v0.0.3
+    rev: v0.0.4
     hooks:
       - id: markdown-toc
       - id: mdspell
+      - id: spelling-sort
