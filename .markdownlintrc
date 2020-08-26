@@ -1,11 +1,14 @@
 {
   "default": true,
+  "first-header-h1": false,
+  "first-line-h1": false,
   "line_length": false,
-  "MD024": {
+  "no-multiple-blanks": false,
+  "fenced-code-language": true,
+  "no-duplicate-header": {
     "siblings_only": true
   },
-  "MD014": false,
-  "MD033": false,
-  "MD040": false,
-  "MD046": false
+  "code-block-style": {
+    "style": "fenced"
+  }
 }
