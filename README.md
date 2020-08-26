@@ -9,7 +9,7 @@
 * [mdspell](#mdspell)
 * [spelling-sort](#spelling-sort)
 
-Regenerate with "pre-commit run -a markdown-toc"
+<!-- Regenerate with "pre-commit run -a markdown-toc" -->
 
 <!-- tocstop -->
 
