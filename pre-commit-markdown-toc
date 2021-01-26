@@ -11,7 +11,7 @@ set -eu -o pipefail
 
 # Get the directory of this file inside pre-commit cache
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-MDTOC_BIN="${DIR}/../../node_modules/.bin/markdown-toc"
+MDTOC_BIN="${DIR}/../../node_env-12.16.3/bin/markdown-toc"
 
 for filename in "$@"; do
   # Using backticks in this appended comment seems to make the script
