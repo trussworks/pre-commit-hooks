@@ -29,6 +29,7 @@
   description: Generate a Table of Contents in Markdown files
   entry: npx md-toc
   language: node
+  additional_dependencies: ["markdown-toc"]
   types: ["file", "markdown"]
 
 - id: mdspell
