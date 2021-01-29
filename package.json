@@ -8,7 +8,7 @@
   "name": "pre-commit-hooks",
   "private": true,
   "bin": {
-    "md-toc": "./pre-commit-markdown-toc",
+    "markdowntoc": "./pre-commit-markdown-toc",
     "adr": "./pre-commit-gen-docs"
   },
   "scripts": {},
