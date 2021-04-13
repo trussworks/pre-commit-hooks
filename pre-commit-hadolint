@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+HADOLINT_PREFIX_URL="https://github.com/hadolint/hadolint/releases/download"
+HADOLINT_VERSION="v2.1.0"
+OS=$(uname -s)
+ARCH=$(uname -m)
+HADOLINT_BINARY="hadolint-${OS}-${ARCH}"
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+LOCAL_BINARY="${DIR}/${HADOLINT_BINARY}-${HADOLINT_VERSION}"
+
+# Download the binary if it doesn't already exist
+if [[ ! -x ${LOCAL_BINARY} ]]; then
+    curl -o "${LOCAL_BINARY}" \
+         -L -sSf "${HADOLINT_PREFIX_URL}/${HADOLINT_VERSION}/${HADOLINT_BINARY}"
+    chmod 755 "${LOCAL_BINARY}"
+fi
+
+files=()
+
+# only run hadolint if it looks like a Dockerfile
+for f in "$@"; do
+    case $f in
+        (Dockerfile*|*/Dockerfile*)
+            files+=( "${f}" )
+            ;;
+    esac
+done
+
+if [[ "${#files[@]}" -gt 0 ]]; then
+    exec "${LOCAL_BINARY}" "${files[@]}"
+fi

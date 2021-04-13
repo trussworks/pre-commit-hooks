@@ -47,3 +47,9 @@
   entry: /usr/bin/sort -u -o .spelling .spelling
   language: script
   pass_filenames: false
+
+- id: hadolint
+  name: Run hadolint Dockerfile linter
+  description: Run hadolint Dockerfile linter
+  entry: pre-commit-hadolint
+  language: script
