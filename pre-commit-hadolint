@@ -13,15 +13,11 @@ LOCAL_BINARY="${DIR}/${HADOLINT_BINARY}-${HADOLINT_VERSION}"
 
 # Download the binary if it doesn't already exist
 if [[ ! -x ${LOCAL_BINARY} ]]; then
-    curl -o "${LOCAL_BINARY}" \
+    # download to temp location and rename to prevent Text file busy
+    curl -o "${LOCAL_BINARY}.new" \
          -L -sSf "${HADOLINT_PREFIX_URL}/${HADOLINT_VERSION}/${HADOLINT_BINARY}"
-    chmod 755 "${LOCAL_BINARY}"
-    if [[ -n "${CIRCLECI+x}" ]]; then
-        # oh CircleCI, you so funny
-        # Text file busy error makes is likely you are using aufs and
-        # so we need to
-        sync
-    fi
+    chmod 755 "${LOCAL_BINARY}.new"
+    mv "${LOCAL_BINARY}.new" "${LOCAL_BINARY}"
 fi
 
 files=()
