@@ -24,6 +24,7 @@ function mylock() {
 }
 
 # Download the binary if it doesn't already exist
+# use the locking pattern from https://linux.die.net/man/1/flock
 (
     mylock
     if [[ ! -x ${LOCAL_BINARY} ]]; then
