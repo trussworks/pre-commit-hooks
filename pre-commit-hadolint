@@ -16,6 +16,12 @@ if [[ ! -x ${LOCAL_BINARY} ]]; then
     curl -o "${LOCAL_BINARY}" \
          -L -sSf "${HADOLINT_PREFIX_URL}/${HADOLINT_VERSION}/${HADOLINT_BINARY}"
     chmod 755 "${LOCAL_BINARY}"
+    if [[ -n "${CIRCLECI+x}" ]]; then
+        # oh CircleCI, you so funny
+        # Text file busy error makes is likely you are using aufs and
+        # so we need to
+        sync
+    fi
 fi
 
 files=()
