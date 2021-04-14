@@ -55,3 +55,7 @@ will ignore words listed in a `.spelling` file in your repo.
 ## spelling-sort
 
 Run `sort` on the `.spelling` file used by the `markdown-spellcheck` tool. This keeps the file tidy as it is used.
+
+## hadolint
+
+Run the [hadolint](https://github.com/hadolint/hadolint) Dockerfile linter

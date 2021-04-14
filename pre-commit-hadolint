@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+HADOLINT_PREFIX_URL="https://github.com/hadolint/hadolint/releases/download"
+HADOLINT_VERSION="v2.1.0"
+OS=$(uname -s)
+ARCH=$(uname -m)
+HADOLINT_BINARY="hadolint-${OS}-${ARCH}"
+HADOLINT_URL="${HADOLINT_PREFIX_URL}/${HADOLINT_VERSION}/${HADOLINT_BINARY}"
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+LOCAL_BINARY="${DIR}/${HADOLINT_BINARY}-${HADOLINT_VERSION}"
+
+function mylock() {
+    # *sigh*
+    # macOS does not have flock so fall back to perl(!) if it's not
+    # available
+    if command -v flock &>/dev/null; then
+        flock -x 200
+    else
+        perl -e 'use Fcntl qw(:flock); open($fh, "<&=", 200) || die "Cannot open"; flock($fh, LOCK_EX) || die "Cannot lock"'
+    fi
+}
+
+# Download the binary if it doesn't already exist
+# use the locking pattern from https://linux.die.net/man/1/flock
+(
+    mylock
+    if [[ ! -x ${LOCAL_BINARY} ]]; then
+        curl -o "${LOCAL_BINARY}" -L -sSf "${HADOLINT_URL}"
+        chmod 755 "${LOCAL_BINARY}"
+    fi
+) 200> "${LOCAL_BINARY}.lock"
+
+files=()
+
+# only run hadolint if it looks like a Dockerfile
+for f in "$@"; do
+    case $f in
+        (Dockerfile*|*/Dockerfile*)
+            files+=( "${f}" )
+            ;;
+    esac
+done
+
+if [[ "${#files[@]}" -gt 0 ]]; then
+    exec "${LOCAL_BINARY}" "${files[@]}"
+fi
+
+# if no files, exit successfully
+exit 0
