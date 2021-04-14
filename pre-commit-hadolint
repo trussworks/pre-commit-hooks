@@ -13,11 +13,14 @@ LOCAL_BINARY="${DIR}/${HADOLINT_BINARY}-${HADOLINT_VERSION}"
 
 # Download the binary if it doesn't already exist
 if [[ ! -x ${LOCAL_BINARY} ]]; then
+    tmp_local_binary="${LOCAL_BINARY}.new"
     # download to temp location and rename to prevent Text file busy
-    curl -o "${LOCAL_BINARY}.new" \
+    curl -o "${tmp_local_binary}" \
          -L -sSf "${HADOLINT_PREFIX_URL}/${HADOLINT_VERSION}/${HADOLINT_BINARY}"
-    chmod 755 "${LOCAL_BINARY}.new"
-    mv "${LOCAL_BINARY}.new" "${LOCAL_BINARY}"
+    # ensure the file is synced on CIRCLECI
+    [ -n "${CIRCLECI+x}" ] && sync
+    chmod 755 "${tmp_local_binary}"
+    mv "${tmp_local_binary}" "${LOCAL_BINARY}"
 fi
 
 files=()
