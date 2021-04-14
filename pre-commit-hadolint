@@ -34,3 +34,6 @@ done
 if [[ "${#files[@]}" -gt 0 ]]; then
     exec "${LOCAL_BINARY}" "${files[@]}"
 fi
+
+# if no files, exit successfully
+exit 0
