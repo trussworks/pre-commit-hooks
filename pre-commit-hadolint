@@ -6,8 +6,16 @@ HADOLINT_PREFIX_URL="https://github.com/hadolint/hadolint/releases/download"
 HADOLINT_VERSION="v2.1.0"
 OS=$(uname -s)
 ARCH=$(uname -m)
+
+# so far, hadolint is not providing arm64 binaries
+if [[ "$ARCH" = "arm64" ]]; then
+    # fallback to x86 and hope for runtime translation on macOS
+    ARCH=x86_64
+fi
+
 HADOLINT_BINARY="hadolint-${OS}-${ARCH}"
 HADOLINT_URL="${HADOLINT_PREFIX_URL}/${HADOLINT_VERSION}/${HADOLINT_BINARY}"
+
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 LOCAL_BINARY="${DIR}/${HADOLINT_BINARY}-${HADOLINT_VERSION}"
