@@ -1,9 +1,11 @@
 CircleCI
+Dockerfile
 adr-log
 circleci-validate
 config
 goreleaser
 goreleaser-check
+hadolint
 markdown-toc
 mdspell
 pre-commit
