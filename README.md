@@ -8,6 +8,7 @@
 * [markdown-toc](#markdown-toc)
 * [mdspell](#mdspell)
 * [spelling-sort](#spelling-sort)
+* [hadolint](#hadolint)
 
 <!-- Regenerate with "pre-commit run -a markdown-toc" -->
 
