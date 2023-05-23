@@ -11,16 +11,20 @@ repos:
       - id: mixed-line-ending
       - id: check-yaml
 
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.34.0
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.16
     hooks:
-      - id: markdownlint
-        entry: markdownlint --ignore .github/*.md
+      - id: mdformat
+        name: fix markdown formatting with mdformat
+        types: [markdown]
+        additional_dependencies:
+          - mdformat-gfm
+          - mdformat-toc
+          - mdformat-frontmatter
 
   - repo: https://github.com/trussworks/pre-commit-hooks
     rev: v1.1.1
     hooks:
-      - id: markdown-toc
       - id: mdspell
       - id: spelling-sort
 
