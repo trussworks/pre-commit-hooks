@@ -1,18 +1,17 @@
 # Truss pre-commit hooks
 
-<!-- toc -->
+<!-- mdformat-toc start --slug=github --no-anchors --maxlevel=3 --minlevel=1 -->
 
-* [circleci-validate](#circleci-validate)
-* [gen-docs](#gen-docs)
-* [goreleaser-check](#goreleaser-check)
-* [markdown-toc](#markdown-toc)
-* [mdspell](#mdspell)
-* [spelling-sort](#spelling-sort)
-* [hadolint](#hadolint)
+- [Truss pre-commit hooks](#truss-pre-commit-hooks)
+  - [circleci-validate](#circleci-validate)
+  - [gen-docs](#gen-docs)
+  - [goreleaser-check](#goreleaser-check)
+  - [markdown-toc](#markdown-toc)
+  - [mdspell](#mdspell)
+  - [spelling-sort](#spelling-sort)
+  - [hadolint](#hadolint)
 
-<!-- Regenerate with "pre-commit run -a markdown-toc" -->
-
-<!-- tocstop -->
+<!-- mdformat-toc end -->
 
 ## circleci-validate
 
