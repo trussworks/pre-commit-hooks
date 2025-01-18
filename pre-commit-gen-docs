@@ -3,8 +3,8 @@
 set -eu -o pipefail
 
 # Get the directory of this file inside pre-commit cache
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-ADR_BIN="${DIR}/../../node_modules/.bin/adr-log"
+#DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+#ADR_BIN="${DIR}/../../node_modules/.bin/adr-log"
 
 # Rename ADR to whatever we want
 function rename {
@@ -20,7 +20,7 @@ function update_index {
   pushd "${dir}" > /dev/null || return
 
   # Rebuild the index && remove both newlines that it adds
-  node "${ADR_BIN}" -i && chomp index.md && chomp index.md
+  npx adr-log -i && chomp index.md && chomp index.md
 
   # We need to rename ADR to a different name
   title=$(basename "$1")
